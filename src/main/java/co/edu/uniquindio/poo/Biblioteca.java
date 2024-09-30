@@ -19,9 +19,9 @@ public class Biblioteca {
      * @param nombre
      * @param totalDineroRecaudo
      */
-    public Biblioteca(String nombre, double totalDineroRecaudo) {
+    public Biblioteca(String nombre) {
         this.nombre = nombre;
-        this.totalDineroRecaudo = totalDineroRecaudo;
+        this.totalDineroRecaudo = calcularTotalDineroRecaudado();
         bibliotecarios = new LinkedList<>();
         prestamos = new LinkedList<>();
         libros = new LinkedList<>();
@@ -401,7 +401,6 @@ public class Biblioteca {
      * @param prestamo objeto de tipo prestamo al cual se le va mostrar el costo total
      */
      public void entregarPrestamo(Prestamo prestamo){
-        //Metodo que calcula el costo total
         LocalDate fechaSalidaPreastamo=prestamo.getFechaPrestamo();
         LocalDate fechaEntregaPrestamo=prestamo.getFechaEntrega();
 
@@ -415,6 +414,25 @@ public class Biblioteca {
         }
         
         System.out.println("El costo del prestamo es= " + costoTotal);
+    }
+    
+    /**
+     * Metodo que permite calcular el total de dinero recaudado por la biblioteca
+     * @return total del dinero recaudado
+     */
+    public double calcularTotalDineroRecaudado(){
+        double dineroRecaudado=0;
+        for (Prestamo prestamo : prestamos){
+        LocalDate fechaSalidaPreastamo=prestamo.getFechaPrestamo();
+        LocalDate fechaEntregaPrestamo=prestamo.getFechaEntrega();
+        
+        double diferenciaDias = ChronoUnit.DAYS.between(fechaSalidaPreastamo, fechaEntregaPrestamo);
+
+        double costoTotal= diferenciaDias*prestamo.getTotal();
+
+        dineroRecaudado+=costoTotal;
+        }
+        return dineroRecaudado;
     }
 
     /**
