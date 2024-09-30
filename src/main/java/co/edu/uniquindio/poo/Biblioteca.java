@@ -158,30 +158,6 @@ public class Biblioteca {
     }
 
     /**
-     * Metodo para mostrar los datos del libro consultado dado su codigo
-     * @param codigo
-     */
-
-    public void consultarLibro(String codigo) {
-        for (Libro libro : libros) {
-            if (libro.getCodigo().equals(codigo)) {
-                mostrarLibro(libro);
-                break;
-            }
-        }
-    }
-
-    /**
-     * Metodo que permite mostrar los datos del libro consultado
-     * @param libro
-     */
-
-    public void mostrarLibro(Libro libro) {
-        System.out.println(libro);
-    }
-    
-
-    /**
      * Metodo que permite saber cual es el estudiante con mas prestamos
      */
     public void estudianteMasPrestamos() {
@@ -209,6 +185,28 @@ public class Biblioteca {
         } else {
             System.out.println("No hay estudiantes.");
         }
+    }
+
+      /**
+     * Metodo para mostrar los datos del libro consultado dado su codigo
+     * @param codigo
+     */
+    public void consultarLibro(String codigo) {
+        for (Libro libro : libros) {
+            if (libro.getCodigo().equals(codigo)) {
+                mostrarLibro(libro);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Metodo que permite mostrar los datos del libro consultado
+     * @param libro
+     */
+
+    public void mostrarLibro(Libro libro) {
+        System.out.println(libro);
     }
 
     /**
