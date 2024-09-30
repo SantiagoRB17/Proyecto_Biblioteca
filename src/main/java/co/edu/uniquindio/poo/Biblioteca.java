@@ -376,8 +376,29 @@ public class Biblioteca {
             }
         }
     }
-    
 
+    /**
+     * Metodo para agregar un libro
+     * @param libro
+     */
+
+    public void agregarLibro(Libro libro) {
+        libros.add(libro);
+    }
+
+    /**
+     * Metodo para eliminar un libro
+     * @param codigo
+     */
+
+    public void eliminarLibro(String codigo) {
+        for (Libro libro : libros) {
+            if (libro.getCodigo().equals(codigo)) {
+                libros.remove(libro);
+            }
+        }
+    }
+   
     /**
      * Metodo para reemplazar un libro por otro
      * 
@@ -433,6 +454,31 @@ public class Biblioteca {
         dineroRecaudado+=costoTotal;
         }
         return dineroRecaudado;
+    }
+
+    /**
+     * Metodo para extraer el el año de ingreso y el año actual de fecha de ingreso la cual esta de tipo LocalDate y lo resta con el año actual para obtener los años de antiguedad 
+     * @param fechaIngreso
+     * @return
+     */
+
+    public int calcularAntiguedad(LocalDate fechaIngreso) {
+        int antiguedad = LocalDate.now().getYear() - fechaIngreso.getYear();
+        return antiguedad;
+    }
+
+    /**
+     * Metodo que permite calcular el salario del bibliotecario
+     * @param prestamo
+     * @param calcularAntiguedad
+     * @return
+     */
+
+    public static double calcularSalarioBibliotecario (Prestamo prestamo, double calcularAntiguedad) {
+        double salarioPrestamos = prestamo.getTotal() * 0.20;
+        double bonificacion = calcularAntiguedad * 0.02;
+        double salarioTotal = salarioPrestamos + bonificacion;
+    return salarioTotal;
     }
 
     /**
