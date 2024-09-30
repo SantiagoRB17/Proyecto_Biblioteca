@@ -83,6 +83,17 @@ public class Bibliotecario extends Persona {
     }
 
     /**
+     * Metodo para agregar prestamo al bibliotecario
+     * 
+     * @param prestamo
+     */
+    public void agregarPrestamoBibliotecario(Prestamo prestamo) {
+        if (prestamo.getBibliotecario().getCedula().equals(getCedula())) {
+            prestamos.add(prestamo);
+        }
+    }
+
+    /**
      * Metodo que forma al bibliotecario y permite mostrar su informacion
      */
     @Override

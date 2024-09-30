@@ -62,6 +62,17 @@ public class Estudiante extends Persona {
     }
 
     /**
+     * Metodo para agregar prestamo al estudiante
+     * 
+     * @param prestamo
+     */
+    public void agregarPrestamoEstudiante(Prestamo prestamo) {
+        if (prestamo.getEstudiante().getCedula().equals(getCedula())) {
+            prestamos.add(prestamo);
+        }
+    }
+
+    /**
      * Metodo que forma al estudiante y permite mostrar su informacion
      */
 
