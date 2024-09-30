@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -392,6 +394,27 @@ public class Biblioteca {
             }
         }
         return "No se encontró el libro";
+    }
+
+    /**
+     * Metodo que muestra el costo total del prestamo y actualiza las unidades del libro
+     * @param prestamo objeto de tipo prestamo al cual se le va mostrar el costo total
+     */
+     public void entregarPrestamo(Prestamo prestamo){
+        //Metodo que calcula el costo total
+        LocalDate fechaSalidaPreastamo=prestamo.getFechaPrestamo();
+        LocalDate fechaEntregaPrestamo=prestamo.getFechaEntrega();
+
+        double diferenciaDias = ChronoUnit.DAYS.between(fechaSalidaPreastamo, fechaEntregaPrestamo);
+
+        double costoTotal= diferenciaDias*prestamo.getTotal();
+
+        for(DetallePrestamo librodetalle: prestamo.getDetallePrestamos()){
+            int cantidadPrestada=librodetalle.getCantidad();
+            librodetalle.actualizarUnidadesLibroEntregaPrestamo(cantidadPrestada);
+        }
+        
+        System.out.println("El costo del prestamo es= " + costoTotal);
     }
 
     /**
