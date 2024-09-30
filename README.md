@@ -1,11 +1,12 @@
 # proyectobiblioteca
 
-Descripciín basisca de su Proyecto de POO ...
+Programa que permite almacenar y gestionar información sobre una biblioteca, la cual contiene: bibliotecarios, estudiantes , libros , préstamos y reportes 
 
 # Autores
 
-- Autor 1
-- Autor 2
+- Jorge Andres Ibarra Guzman
+- Veronica Mendoza Arango
+- Santiago Ramirez Bernal
 
 # Herramientas
 

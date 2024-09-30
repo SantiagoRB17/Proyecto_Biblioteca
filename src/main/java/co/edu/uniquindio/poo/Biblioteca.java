@@ -121,6 +121,50 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Metodo que busca cuantas veces esta un libro en la lista de prestamos
+     * @param nombre Nombre del libro a buscar 
+     * @return El numero de veces que esta el libro
+     */
+    public int consultarCantidadPrestamosLibro(String nombre){
+        int contador=0;
+        for (Prestamo prestamo : prestamos){
+            for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()){
+                    if (detallePrestamo.getLibro().getTitulo().equals(nombre)){
+                        contador+=1;
+                        break;
+                        }
+                }
+
+            }
+        return contador;
+        }
+
+    /**
+     * Metodo que permite mostrar los prestamos realizados por cada empleado
+     */
+    public void mostrarPrestamoEmpleado(){
+        int[]cantidadPrestamosBibliotecarios=new int[bibliotecarios.size()];
+        for (Prestamo prestamo : prestamos){
+            int i=0;
+            Bibliotecario bibliotecarioPrestamo=prestamo.getBibliotecario();
+            for (Bibliotecario bibliotecario : bibliotecarios){
+                if(bibliotecarioPrestamo.equals(bibliotecario)){
+                    cantidadPrestamosBibliotecarios[i]+=1;
+                    break;
+                }
+                i++;
+            }
+        }
+        int j=0;
+        for (Bibliotecario bibliotecario : bibliotecarios){
+            System.out.println("Nombre= " + bibliotecario.getNombre() + ", Prestamos= " + cantidadPrestamosBibliotecarios[j]);
+        }
+        j++;
+    }
+
+
+
     @Override
     public String toString() {
         return "Biblioteca [nombre=" + nombre + ", totalDineroRecaudo=" + totalDineroRecaudo + ", bibliotecarios="
