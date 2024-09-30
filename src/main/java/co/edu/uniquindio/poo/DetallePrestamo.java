@@ -113,6 +113,15 @@ public class DetallePrestamo {
     }
 
     /**
+     * Metodo para actualizar las unidades disponibles despues de la entrega del prestamo
+     * @param cantidadPrestada la cantidad prestada del libro
+     */
+    public void actualizarUnidadesLibroEntregaPrestamo(int cantidadPrestada){
+            int actualizarUnidadesLibro= libro.getUnidadesDisponibles()+cantidadPrestada;
+            libro.setUnidadesDisponibles(actualizarUnidadesLibro);
+    }
+
+    /**
      * Metodo que forma al detallePrestamo y permite mostrar su informacion
      */
     @Override
