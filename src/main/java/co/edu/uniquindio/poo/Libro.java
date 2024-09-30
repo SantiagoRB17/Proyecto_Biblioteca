@@ -10,15 +10,16 @@ public class Libro {
     private boolean estado;
     private int precio;
 
-    public Libro(String codigo, String isbn, String autor, String titulo, String editorial, int unidadesDisponibles, LocalDate fechaPublicacion, int precio){
-        this.codigo=codigo;
-        this.isbn=isbn;
-        this.autor=autor;
-        this.editorial=editorial;
-        this.titulo=titulo;
-        this.unidadesDisponibles=unidadesDisponibles;
-        this.fechaPublicacion=fechaPublicacion;
-        this.precio=precio;
+    public Libro(String codigo, String isbn, String autor, String titulo, String editorial, int unidadesDisponibles,
+            LocalDate fechaPublicacion, int precio) {
+        this.codigo = codigo;
+        this.isbn = isbn;
+        this.autor = autor;
+        this.editorial = editorial;
+        this.titulo = titulo;
+        this.unidadesDisponibles = unidadesDisponibles;
+        this.fechaPublicacion = fechaPublicacion;
+        this.precio = precio;
     }
 
     public String getCodigo() {
@@ -84,6 +85,7 @@ public class Libro {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
     public int getPrecio() {
         return precio;
     }
@@ -92,12 +94,27 @@ public class Libro {
         this.precio = precio;
     }
 
+    /**
+     * Metodo para cambiar el estado del libro segun sus unidades disponibles
+     * 
+     * @return
+     */
+    public boolean actualizarEstadolibro() {
+        if (getUnidadesDisponibles() > 0) {
+            setEstado(true);
+            return true;
+        } else {
+            setEstado(false);
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return "Libro [codigo=" + codigo + ", isbn=" + isbn + ", autor=" + autor + ", titulo=" + titulo + ", editorial="
-                + editorial + ", unidadesDisponibles=" + unidadesDisponibles + ", fechaPublicacion=" + fechaPublicacion + ", precio=" + precio + 
+                + editorial + ", unidadesDisponibles=" + unidadesDisponibles + ", fechaPublicacion=" + fechaPublicacion
+                + ", precio=" + precio +
                 ", estado=" + estado + "]";
     }
-    
 
 }

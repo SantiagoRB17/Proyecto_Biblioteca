@@ -68,6 +68,59 @@ public class Biblioteca {
         this.estudiantes = estudiantes;
     }
 
+    /**
+     * Metodo que permite consultar un prestamo dado su codigo
+     * 
+     * @param codigo
+     */
+    public void consultarPrestamo(String codigo) {
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                mostrarPrestamo(prestamo);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Metodo que permite mostrar el prestamo consultado
+     * 
+     * @param prestamo
+     */
+    public void mostrarPrestamo(Prestamo prestamo) {
+        System.out.println(prestamo);
+    }
+
+    /**
+     * Metodo que permite saber cual es el estudiante con mas prestamos
+     */
+    public void estudianteMasPrestamos() {
+        Estudiante estudianteMaxPrestamos = null;
+        int maxPrestamos = 0;
+
+        for (Estudiante estudiante : estudiantes) {
+            int comparador = estudiante.getPrestamos().size();
+            if (comparador > maxPrestamos) {
+                maxPrestamos = comparador;
+                estudianteMaxPrestamos = estudiante;
+            }
+        }
+        mostarEstudianteMasPrestamos(estudianteMaxPrestamos);
+    }
+
+    /**
+     * Metodo que permite mostrar al estudiante con mas prestamos
+     * 
+     * @param estudiante
+     */
+    public void mostarEstudianteMasPrestamos(Estudiante estudiante) {
+        if (estudiante != null) {
+            System.out.println("Estudiante con más préstamos: " + estudiante);
+        } else {
+            System.out.println("No hay estudiantes.");
+        }
+    }
+
     @Override
     public String toString() {
         return "Biblioteca [nombre=" + nombre + ", totalDineroRecaudo=" + totalDineroRecaudo + ", bibliotecarios="

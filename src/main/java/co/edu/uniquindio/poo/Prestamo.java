@@ -86,6 +86,25 @@ public class Prestamo {
         this.detallePrestamos = detallePrestamos;
     }
 
+    /**
+     * Metodo para agregar un detallePrestamo, con la condicion de que el libro se
+     * encuentre disponible
+     * 
+     * @param detallePrestamo
+     * @param libro
+     */
+    public void agregarDetallePrestamo(DetallePrestamo detallePrestamo, Libro libro) {
+        if (detallePrestamo.getPrestamo().getCodigo().equals(getCodigo())) {
+            if (estudiante.isEstado()) {
+                if (libro.actualizarEstadolibro()) {
+                    detallePrestamos.add(detallePrestamo);
+                    detallePrestamo.actualizarUnidadesLibro();
+                    libro.actualizarEstadolibro();
+                }
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return "Prestamo [codigo=" + codigo + ", fechaPrestamo=" + fechaPrestamo + ", fechaEntrega=" + fechaEntrega
