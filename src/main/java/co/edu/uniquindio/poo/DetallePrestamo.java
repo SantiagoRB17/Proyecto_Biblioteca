@@ -22,7 +22,7 @@ public class DetallePrestamo {
     }
 
     /**
-     * 
+     * Metodo que permite calcular el subtotal de cada libro
      * @return
      */
     public double calcularSubtotal() {

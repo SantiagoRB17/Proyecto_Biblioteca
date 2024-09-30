@@ -8,7 +8,7 @@ public class Biblioteca {
     private double totalDineroRecaudo;
     private Collection<Bibliotecario> bibliotecarios;
     private Collection<Prestamo> prestamos;
-    private Collection<Libro> libros;
+    private LinkedList<Libro> libros;
     private Collection<Estudiante> estudiantes;
 
     /**
@@ -112,7 +112,7 @@ public class Biblioteca {
      * 
      * @param libros
      */
-    public void setLibros(Collection<Libro> libros) {
+    public void setLibros(LinkedList<Libro> libros) {
         this.libros = libros;
     }
 
@@ -229,6 +229,145 @@ public class Biblioteca {
                     "Nombre= " + bibliotecario.getNombre() + ", Prestamos= " + cantidadPrestamosBibliotecarios[j]);
         }
         j++;
+    }
+
+    /**
+     * Metodo para verificar estudiante
+     * 
+     * @param cedula
+     * @return
+     */
+    public boolean verficarEstudiante(String cedula) {
+        boolean centinela = false;
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.getCedula().equals(cedula)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+
+    /**
+     * Metodo para agregar un Estudiante
+     * 
+     * @param estudiante
+     */
+    public void agregarEstudiante(Estudiante estudiante) {
+        if (!verficarEstudiante(estudiante.getCedula())) {
+            estudiantes.add(estudiante);
+        }
+    }
+
+    /**
+     * Metodo para eliminar un estudiante
+     * 
+     * @param cedula
+     */
+    public void eliminarEstudiante(String cedula) {
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.getCedula().equals(cedula)) {
+                estudiantes.remove(estudiante);
+            }
+        }
+    }
+
+    /**
+     * Metodo para verificar bibliotecario
+     * 
+     * @param cedula
+     * @return
+     */
+    public boolean verficarBibliotecario(String cedula) {
+        boolean centinela = false;
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            if (bibliotecario.getCedula().equals(cedula)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+
+    /**
+     * Metodo para agregar un Bibliotecario
+     * 
+     * @param biblotecario
+     */
+    public void agregarBibliotecario(Bibliotecario bibliotecario) {
+        if (!verficarEstudiante(bibliotecario.getCedula())) {
+            bibliotecarios.add(bibliotecario);
+        }
+    }
+
+    /**
+     * Metodo para eliminar un bibliotecario
+     * 
+     * @param cedula
+     */
+    public void eliminarBibliotecario(String cedula) {
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            if (bibliotecario.getCedula().equals(cedula)) {
+                bibliotecarios.remove(bibliotecario);
+            }
+        }
+    }
+   
+    /**
+     * Metodo que permite verificar el prestamo mediante el codigo
+     * @param codigo
+     * @return
+     */
+
+    public boolean verficarPrestamo(String codigo) {
+        boolean centinela = false;
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+
+    /**
+     * Metodo para agregar un prestamo
+     * @param prestamo
+     */
+
+    public void agregarPrestamo(Prestamo prestamo) {
+        if (!verficarPrestamo(prestamo.getCodigo())) {
+            prestamos.add(prestamo);
+        }
+    }
+
+    /**
+     * Metodo para eliminar un prestamo mediante el codigo
+     * @param codigo
+     */
+
+    public void eliminarPrestamo(String codigo) {
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                prestamos.remove(prestamo);
+            }
+        }
+    }
+    
+
+    /**
+     * Metodo para reemplazar un libro por otro
+     * 
+     * @param codigo
+     * @param libro
+     * @return
+     */
+
+    public String reemplazarLibro(String codigo, Libro libro) {
+        for (int i = 0; i < libros.size(); i++) {
+            if (libros.get(i).getCodigo().equals(codigo)) {
+                libros.set(i, libro);
+                return "Se reemplazó el libro";
+            }
+        }
+        return "No se encontró el libro";
     }
 
     /**
