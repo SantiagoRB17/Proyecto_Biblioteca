@@ -7,15 +7,15 @@ public class DetallePrestamo {
     private Libro libro;
     private double subTotal;
 
-    public DetallePrestamo(int cantidad, Prestamo prestamo, Libro libro){
-        this.cantidad=cantidad;
-        this.prestamo=prestamo;
-        this.libro=libro;
-        this.subTotal=calcularSubtotal();
+    public DetallePrestamo(int cantidad, Prestamo prestamo, Libro libro) {
+        this.cantidad = cantidad;
+        this.prestamo = prestamo;
+        this.libro = libro;
+        this.subTotal = calcularSubtotal();
     }
 
-    public double calcularSubtotal(){
-        return cantidad*libro.getPrecio();
+    public double calcularSubtotal() {
+        return cantidad * libro.getPrecio();
     }
 
     public int getCantidad() {
@@ -50,12 +50,19 @@ public class DetallePrestamo {
         this.subTotal = subTotal;
     }
 
+    /**
+     * Metodo que premite actualizar las unidades disponibles del libro
+     */
+    public void actualizarUnidadesLibro() {
+        if (getLibro() == libro) {
+            libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - getCantidad());
+        }
+    }
+
     @Override
     public String toString() {
         return "DetallePrestamo [cantidad=" + cantidad + ", prestamo=" + prestamo + ", libro=" + libro + ", subTotal="
                 + subTotal + "]";
     }
 
-    
-    
 }
