@@ -135,7 +135,7 @@ public class Biblioteca {
     }
 
     /**
-     * Metodo que permite consultar un prestamo dado su codigo
+     * Metodo que permite consultar los datos de un prestamo dado su codigo
      * 
      * @param codigo
      */
@@ -149,7 +149,7 @@ public class Biblioteca {
     }
 
     /**
-     * Metodo que permite mostrar el prestamo consultado
+     * Metodo que permite mostrar los datos del prestamo consultado
      * 
      * @param prestamo
      */
@@ -185,6 +185,28 @@ public class Biblioteca {
         } else {
             System.out.println("No hay estudiantes.");
         }
+    }
+
+      /**
+     * Metodo para mostrar los datos del libro consultado dado su codigo
+     * @param codigo
+     */
+    public void consultarLibro(String codigo) {
+        for (Libro libro : libros) {
+            if (libro.getCodigo().equals(codigo)) {
+                mostrarLibro(libro);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Metodo que permite mostrar los datos del libro consultado
+     * @param libro
+     */
+
+    public void mostrarLibro(Libro libro) {
+        System.out.println(libro);
     }
 
     /**
