@@ -356,9 +356,11 @@ public class Biblioteca {
      * @param prestamo
      */
 
-    public void agregarPrestamo(Prestamo prestamo) {
+    public void agregarPrestamo(Prestamo prestamo,Bibliotecario bibliotecario, Estudiante estudiante) {
         if (!verficarPrestamo(prestamo.getCodigo())) {
             prestamos.add(prestamo);
+            bibliotecario.agregarPrestamoBibliotecario(prestamo);
+            estudiante.agregarPrestamoEstudiante(prestamo);
         }
     }
 
