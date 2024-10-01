@@ -25,7 +25,7 @@ public class Bibliotecario extends Persona {
         super(nombre, cedula, correo, telefono);
         this.salario = salario;
         this.fechaIngreso = fechaIngreso;
-        prestamos = new LinkedList<>();
+        this.prestamos = new LinkedList<>();
     }
 
     /**
@@ -93,13 +93,15 @@ public class Bibliotecario extends Persona {
         }
     }
 
+    
     /**
      * Metodo que forma al bibliotecario y permite mostrar su informacion
      */
     @Override
     public String toString() {
         return "Bibliotecario [salario=" + salario + ", fechaIngreso=" + fechaIngreso + ", prestamos=" + prestamos
-                + "]";
+                + ", Nombre()=" + getNombre() + ", Cedula()=" + getCedula() + ", Correo()=" + getCorreo()
+                + ", Telefono()=" + getTelefono() + "]";
     }
 
 }
