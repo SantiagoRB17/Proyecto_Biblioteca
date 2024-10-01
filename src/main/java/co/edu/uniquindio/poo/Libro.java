@@ -32,6 +32,7 @@ public class Libro {
         this.unidadesDisponibles = unidadesDisponibles;
         this.fechaPublicacion = fechaPublicacion;
         this.precio = precio;
+        actualizarEstadolibro();
     }
 
     /**

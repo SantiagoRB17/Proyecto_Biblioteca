@@ -27,7 +27,9 @@ public class Prestamo {
         this.codigo = codigo;
         this.fechaEntrega = fechaEntrega;
         this.fechaPrestamo = fechaPrestamo;
-        detallePrestamos = new LinkedList<>();
+        this.bibliotecario=bibliotecario;
+        this.estudiante=estudiante;
+        this.detallePrestamos = new LinkedList<>();
         this.total = calcularTotal();
     }
 
@@ -180,7 +182,7 @@ public class Prestamo {
     public void agregarDetallePrestamo(DetallePrestamo detallePrestamo, Libro libro) {
         if (detallePrestamo.getPrestamo().getCodigo().equals(getCodigo())) {
             if (estudiante.isEstado()) {
-                if (libro.actualizarEstadolibro()) {
+                if (libro.getUnidadesDisponibles() >= detallePrestamo.getCantidad()) {
                     detallePrestamos.add(detallePrestamo);
                     detallePrestamo.actualizarUnidadesLibro();
                     libro.actualizarEstadolibro();
@@ -195,8 +197,7 @@ public class Prestamo {
     @Override
     public String toString() {
         return "Prestamo [codigo=" + codigo + ", fechaPrestamo=" + fechaPrestamo + ", fechaEntrega=" + fechaEntrega
-                + ", total=" + total + ", bibliotecario=" + bibliotecario + ", estudiante=" + estudiante
-                + ", detallePrestamos=" + detallePrestamos + "]";
+                + ", total=" + total +"]";
     }
 
 }

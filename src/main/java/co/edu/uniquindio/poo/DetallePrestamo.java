@@ -107,9 +107,9 @@ public class DetallePrestamo {
      * Metodo que premite actualizar las unidades disponibles del libro
      */
     public void actualizarUnidadesLibro() {
-        if (getLibro() == libro) {
-            libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - getCantidad());
-        }
+        libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - getCantidad());
+        libro.actualizarEstadolibro();
+
     }
 
     /**
@@ -126,7 +126,7 @@ public class DetallePrestamo {
      */
     @Override
     public String toString() {
-        return "DetallePrestamo [cantidad=" + cantidad + ", prestamo=" + prestamo + ", libro=" + libro + ", subTotal="
+        return "DetallePrestamo [cantidad=" + cantidad + ", libro=" + libro + ", subTotal="
                 + subTotal + "]";
     }
 

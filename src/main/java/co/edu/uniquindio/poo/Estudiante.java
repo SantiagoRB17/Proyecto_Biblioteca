@@ -20,7 +20,7 @@ public class Estudiante extends Persona {
     public Estudiante(String nombre, String cedula, String correo, int telefono, boolean estado) {
         super(nombre, cedula, correo, telefono);
         this.estado = estado;
-        prestamos = new LinkedList<>();
+        this.prestamos = new LinkedList<>();
     }
 
     /**
@@ -72,13 +72,14 @@ public class Estudiante extends Persona {
         }
     }
 
+    
     /**
      * Metodo que forma al estudiante y permite mostrar su informacion
      */
-
     @Override
     public String toString() {
-        return "Estudiante [estado=" + estado + ", prestamos=" + prestamos + "]";
+        return "Estudiante [estado=" + estado + ", prestamos=" + prestamos + ", Nombre()=" + getNombre()
+                + ", Cedula()=" + getCedula() + ", Correo()=" + getCorreo() + ", Telefono()=" + getTelefono()
+                + "]";
     }
-
 }

@@ -21,11 +21,11 @@ public class Biblioteca {
      */
     public Biblioteca(String nombre) {
         this.nombre = nombre;
+        this.bibliotecarios = new LinkedList<>();
+        this.prestamos = new LinkedList<>();
+        this.libros = new LinkedList<>();
+        this.estudiantes = new LinkedList<>();
         this.totalDineroRecaudo = calcularTotalDineroRecaudado();
-        bibliotecarios = new LinkedList<>();
-        prestamos = new LinkedList<>();
-        libros = new LinkedList<>();
-        estudiantes = new LinkedList<>();
     }
 
     /**
@@ -356,11 +356,11 @@ public class Biblioteca {
      * @param prestamo
      */
 
-    public void agregarPrestamo(Prestamo prestamo,Bibliotecario bibliotecario, Estudiante estudiante) {
+    public void agregarPrestamo(Prestamo prestamo) {
         if (!verficarPrestamo(prestamo.getCodigo())) {
             prestamos.add(prestamo);
-            bibliotecario.agregarPrestamoBibliotecario(prestamo);
-            estudiante.agregarPrestamoEstudiante(prestamo);
+            //bibliotecario.agregarPrestamoBibliotecario(prestamo);
+            //estudiante.agregarPrestamoEstudiante(prestamo);
         }
     }
 
@@ -443,13 +443,14 @@ public class Biblioteca {
      */
     public double calcularTotalDineroRecaudado(){
         double dineroRecaudado=0;
+        double costoTotal;
         for (Prestamo prestamo : prestamos){
         LocalDate fechaSalidaPreastamo=prestamo.getFechaPrestamo();
         LocalDate fechaEntregaPrestamo=prestamo.getFechaEntrega();
         
-        double diferenciaDias = ChronoUnit.DAYS.between(fechaSalidaPreastamo, fechaEntregaPrestamo);
+        int diferenciaDias = (int) ChronoUnit.DAYS.between(fechaSalidaPreastamo, fechaEntregaPrestamo);
 
-        double costoTotal= diferenciaDias*prestamo.getTotal();
+        costoTotal= diferenciaDias*prestamo.getTotal();
 
         dineroRecaudado+=costoTotal;
         }
